@@ -40,5 +40,24 @@
 - reset the game tally after 3 wins
 
 
+#TO DO:
+
+#NOTES:
+To disable a space after move add a trasparent div over the top to intercept
+the clicks:
+http://stackoverflow.com/questions/8595909/how-to-completley-disable-any-mouse-click
+You can overlay a big, semi-transparent <div> that takes all the
+clicks. Just append a new <div> to .space <dive> with this style:
+.overlay {
+    background-color: rgba(1, 1, 1, 0.7);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+/*make mediaquuery to force aspect ratio*/
+
 
 
