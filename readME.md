@@ -59,5 +59,12 @@ clicks. Just append a new <div> to .space <dive> with this style:
 
 /*make mediaquuery to force aspect ratio*/
 
+- write this function to reset the board = clearBoard()
+This function will go through every cell in checkerboard (see previous
+exercise) and set that cell's value to null.
+-write another function to reset the tally clearTally - get number of div
+elements that were appended and then do an equal number of divs, or try to
+simple do a remove of all divs with the same class/id
 
+- animate a fade in and out x/o pattern on page load
 
