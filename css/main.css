@@ -102,6 +102,7 @@ h6 {
     margin-left: auto;
     width: 75%;
     height: 25%;
+    text-align: center;
 }
 
 .rowTop{
@@ -237,12 +238,13 @@ button {
 .shadowed{
     /*text-shadow: 0px 11px 6px rgba(84, 235, 233, 1);*/
     animation-name: example;
-    animation-duration: 2s;
+    animation-duration: 1.2s;
     animation-iteration-count: 3;
     font-size: 6em;
     text-shadow: 0px 11px 6px rgba(84, 235, 233, 1);
     padding-top: none;
     margin-top: -.15em;
+    text-align: center;
 
     /*-webkit-box-shadow: 0px 0px 37px 5px rgba(62,235,18,1);
     -moz-box-shadow: 0px 0px 37px 5px rgba(62,235,18,1);

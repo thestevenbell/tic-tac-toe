@@ -31,10 +31,14 @@
 - add i (instruction) icon with dropdown
 -add x/o winner tally to the top bar
 -reset the game board after single game win
+  -remove classes from rows
+  -
 -reset the game tally after 3 wins
+  - clear the scoreKeep array
 -restart game witout force page reload by click on reset button
 -add board/reset button to 1/5 game win notice without resetting the counter
 -deal with tie in game - reset the round?
+-add "x" won round '?'
 -DRY up code
 ##JS DONE
 - add x/o to selected square

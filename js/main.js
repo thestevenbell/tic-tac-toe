@@ -1,4 +1,29 @@
-  var winner = "";
+ // $(".fa refresh").on('click', function() {
+ //      console.log('reset button clicked');
+ //      console.log('line 341');
+ //      window.location.reload();
+ //  });
+
+   $("#centerBoard > div.buttonBar > button.play").click(function() {
+        alert("Handler for .click() called.");
+    });
+
+
+   $("#centerBoard > div.buttonBar > button.reset").click(function() {
+        // alert("Handler for .click() called.");
+        window.location.reload();
+    });
+
+
+
+var winner = "";
+var currentPlayer = 'X';
+var scoreOfX = 0;
+var scoreOfO = 0;
+var boardArray = [null, null, null,
+                  null, null, null,
+                  null, null, null
+                  ];
 
   function dropShadowABC(){
      $( "#a1 > div > h2, #b1 > div > h2, #c1 > div > h2").addClass( " shadowed" );
@@ -32,99 +57,140 @@
      $( "#c1 > div > h2, #e2 > div > h2, #g3 > div > h2").addClass( " shadowed" );
     }
 
-    var score3of5 = [null, null, null, null, null];
-    var scoreOfX = 0;
-    var scoreOfO = 0;
+// this code is meant to count the 3 of 5 winner - finish after declaring
+// winner of each round and resetting the board, but need to keep talley
+    function declare3of5Winner(){
+      $(".spaceBox").replaceWith("<div class='rowWinner'><h1 class='shadowed'>" +  winner + winner + winner + '</h1></br><h4> is the grand champion!</h4></br></div>');
+       console.log('Grand champion should be declared. Was it?');
+      }
 
-     var boardArray = [null, null, null,
-        null, null, null,
-        null, null, null
-    ];
 
+    function check3of5winner(){
+      if(scoreOfX === 3){
+      declare3of5Winner();
+      console.log('<h2>X </h2></br>' + '<h4> is the grand champion!</h4>');
+      }
+      else if(scoreOfO === 3){
+      declare3of5Winner();
+      console.log('O is grand champion!');
+      }
+      else{
+        console.log('Two letters enter, one letter leaves!');
+      }
+    }
+//checks winner of the round, animates the winning moves.
+//Need to make function for every row
      function checkWinner(){
       if (boardArray[0] === 'X' && boardArray[1]  === "X"  && boardArray[2] === "X"){
-       winner = "X";
+        winner = "X";
         dropShadowABC();
         delayedAlert();
-        console.log('top row winner is ' + winner);
-        //check3of5winner();
-          //scoreOfX =+1;
-
-      //append the winner
+        scoreOfX += 1;
+        console.log('this round top row winner is ' + winner);
       }
       if (boardArray[0] === 'O' && boardArray[1]  === "O"  && boardArray[2] === "O"){
        winner = "O";
-        console.log('top row winner is ' + winner);
+        console.log('this round top row winner is ' + winner);
         dropShadowABC();
+        delayedAlert();
+        scoreOfO += 1;
       }
         if (boardArray[3] === 'X' && boardArray[4]  === "X"  && boardArray[5] === "X"){
        winner = "X";
         dropShadowDEF();
+        delayedAlert();
+        scoreOfX += 1;
         console.log('middle row winner is ' + winner);
       }
       if (boardArray[3] === 'O' && boardArray[4]  === "O"  && boardArray[5] === "O"){
        winner = "O";
          dropShadowDEF();
+         delayedAlert();
+        scoreOfO += 1;
         console.log('middle rox winner is ' + winner);
       }
       if (boardArray[6] === 'X' && boardArray[7]  === "X"  && boardArray[8] === "X"){
        winner = "X";
         dropShadowGHI();
+        delayedAlert();
+        scoreOfX += 1;
         console.log('winner is ' + winner);
       }
       if (boardArray[6] === 'O' && boardArray[7]  === "O"  && boardArray[8] === "O"){
        winner = "O";
         dropShadowGHI();
+        delayedAlert();
+        scoreOfO += 1;
         console.log('winner is ' + winner);
       }
       if (boardArray[0] === 'X' && boardArray[3]  === "X"  && boardArray[6] === "X"){
        winner = "X";
         dropShadowADG();
+        delayedAlert();
+        scoreOfX += 1;
         console.log('first column winner is ' + winner);
       }
       if (boardArray[0] === 'O' && boardArray[3]  === "O"  && boardArray[6] === "O"){
        winner = "O";
         dropShadowADG();
+        delayedAlert();
+        scoreOfO += 1;
         console.log('first column winner is ' + winner);
       }
       if (boardArray[1] === 'X' && boardArray[4]  === "X"  && boardArray[7] === "X"){
        winner = "X";
         dropShadowBEH();
+        delayedAlert();
+        scoreOfX += 1;
         console.log('middle column winner is ' + winner);
       }
       if (boardArray[1] === 'O' && boardArray[4]  === "O"  && boardArray[7] === "O"){
        winner = "O";
         dropShadowBEH();
+        delayedAlert();
+        scoreOfO += 1;
         console.log('middle column winner is ' + winner);
       }
       if (boardArray[2] === 'X' && boardArray[5]  === "X"  && boardArray[8] === "X"){
        winner = "X";
         dropShadowCFI();
+        delayedAlert();
+        scoreOfX += 1;
         console.log('winner is ' + winner);
       }
       if (boardArray[2] === 'O' && boardArray[5]  === "O"  && boardArray[8] === "O"){
        winner = "O";
         dropShadowCFI();
+        delayedAlert();
+        scoreOfO += 1;
         console.log('winner is ' + winner);
       }
       if (boardArray[0] === 'X' && boardArray[4]  === "X"  && boardArray[8] === "X"){
        winner = "X";
         dropShadowAEI();
+        delayedAlert();
+        scoreOfX += 1;
         console.log('winner is ' + winner);
       }
       if (boardArray[0] === 'O' && boardArray[4]  === "O"  && boardArray[8] === "O"){
        winner = "O";
         dropShadowAEI();
+        delayedAlert();
+        scoreOfO += 1;
         console.log('winner is ' + winner);
       }
       if (boardArray[2] === 'X' && boardArray[4]  === "X"  && boardArray[6] === "X"){
        winner = "X";
         dropShadowCEG();
+        delayedAlert();
+        scoreOfX += 1;
         console.log('winner is ' + winner);
       }
       if (boardArray[2] === 'O' && boardArray[4]  === "O"  && boardArray[6] === "O"){
          winner = "O";
         dropShadowCEG();
+        delayedAlert();
+        scoreOfO += 1;
         console.log('winner is ' + winner);
       }
       else{
@@ -132,69 +198,6 @@
         console.log("boardArray: " +  boardArray[0]);
       }
     }
-
-$(document).ready(function() {
-
-    var currentPlayer = 'X';
-
-    function onClick(el) {
-        el.append("<div class= 'xoPlay'><h2> " + currentPlayer + " </h2></div>");
-        // use the ternary operator to toggle the currentPlayer.
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    }
-
-//sets up the array used for score keeping in a round
-
-    function onClickArray(space) {
-        if (space == "#a1") {
-            console.log("a1: it works!");
-            boardArray[0] = currentPlayer === 'O' ? 'X' : 'O';
-            console.log(boardArray);
-            console.log("boardArray space a1 = " + boardArray[0]);
-            return boardArray[0];
-        } else if (space == "#b1") {
-            console.log("b1: it works!");
-            boardArray[1] = currentPlayer === 'O' ? 'X' : 'O';
-            return boardArray[1];
-            console.log('boardArray space b1 = ' + boardArray[1]);
-        } else if (space == "#c1") {
-            console.log("c1: it works!");
-            boardArray[2] = currentPlayer === 'O' ? 'X' : 'O';
-            console.log(boardArray);
-            return boardArray[2];
-        } else if (space == "#d2") {
-            console.log("it works!");
-            boardArray[3] = currentPlayer === 'O' ? 'X' : 'O';
-            return boardArray[3];
-            console.log(boardArray);
-        } else if (space == "#e2") {
-            console.log("it works!");
-            boardArray[4] = currentPlayer === 'O' ? 'X' : 'O';
-            console.log(boardArray);
-        } else if (space == "#f2") {
-            console.log("it works!");
-            boardArray[5] = currentPlayer === 'O' ? 'X' : 'O';
-            console.log(boardArray);
-        } else if (space == "#g3") {
-            console.log("it works!");
-            boardArray[6] = currentPlayer === 'O' ? 'X' : 'O';
-            console.log(boardArray);
-        } else if (space == "#h3") {
-            console.log("it works!");
-            boardArray[7] = currentPlayer === 'O' ? 'X' : 'O';
-            console.log(boardArray);
-        } else if (space == "#i3") {
-            console.log("it works!");
-            boardArray[8] = currentPlayer === 'O' ? 'X' : 'O';
-            console.log(boardArray);
-        } else {
-            console.log("Tie");
-        }
-    }
-
-    $("#centerBoard > div.buttonBar > button.play").click(function() {
-        alert("Handler for .click() called.");
-    });
 
     $("#a1").click(function() {
         var el = $("#a1");
@@ -296,56 +299,95 @@ $(document).ready(function() {
         onClickArray(space);
     });
 
-
-
     $(".row").click(checkWinner);
 
-
-// this code is meant to count the 3 of 5 winner - finish after declaring
-// winner of each round and resetting the board, but need to keep talley
-    // function check3of5winner(){
-    //   if(scoreOfX = 3){
-    //     console.log('X is grand champion!');
-    //   }
-    //   else if(scoreOfO = 3){
-    //     console.log('X is grand champion!');
-    //   }
-    //   else{
-    //     console.log('No winner yet!')
-    //   }
-    // }
-
-
-    var timeout7000;
-    var timeout7001;
-
+    var timeout3000;
+    var timeout3001;
+    var timeout5000;
 
     function delayedAlert() {
-      timeout7001 = window.setTimeout(declareRoundWinner, 7001);
-      timeout7000 = window.setTimeout(clearFix, 7000);
+      timeout3001 = window.setTimeout(declareRoundWinner, 3001);
+      timeout3000 = window.setTimeout(clearFix, 3000);
+      timeout2000 = window.setTimeout(check3of5winner, 5000);
       function clearFix(){
       $(".row").addClass(" hidden");
       console.log('spaces hidden?');
       }
      function declareRoundWinner(){
-      $(".spaceBox").prepend("<div class='rowWinner'></div><div class='rowWinner'><h4>the winner of this round is " + winner + ".</h4></div>");
+      $(".spaceBox").prepend("<div class='rowWinner'><h1 class='shadowed'>" + winner + winner + winner +  "</h1><h4>won this  round</h4></div>");
        console.log('winner declared?');
       }
+      check3of5winner();
     }
-
-
-
-
-
-      $( "#a1" ).one( "click", function() {
-      });
 
     onClick();
     onClickArray();
     checkWinner();
 
-});
-console.log(winner);
+    function onClick(el) {
+        el.append("<div class= 'xoPlay'><h2> " + currentPlayer + " </h2></div>");
+        // use the ternary operator to toggle the currentPlayer.
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    }
+
+//sets up the array used for score keeping in a round
+    function onClickArray(space) {
+        if (space == "#a1") {
+            console.log("a1: it works!");
+            boardArray[0] = currentPlayer === 'O' ? 'X' : 'O';
+            console.log(boardArray);
+            console.log("boardArray space a1 = " + boardArray[0]);
+            return boardArray[0];
+        } else if (space == "#b1") {
+            console.log("b1: it works!");
+            boardArray[1] = currentPlayer === 'O' ? 'X' : 'O';
+            console.log('boardArray space b1 = ' + boardArray[1]);
+            return boardArray[1];
+        } else if (space == "#c1") {
+            console.log("c1: it works!");
+            boardArray[2] = currentPlayer === 'O' ? 'X' : 'O';
+            console.log(boardArray);
+            return boardArray[2];
+        } else if (space == "#d2") {
+            console.log("it works!");
+            boardArray[3] = currentPlayer === 'O' ? 'X' : 'O';
+            return boardArray[3];
+        } else if (space == "#e2") {
+            console.log("it works!");
+            boardArray[4] = currentPlayer === 'O' ? 'X' : 'O';
+            console.log(boardArray);
+        } else if (space == "#f2") {
+            console.log("it works!");
+            boardArray[5] = currentPlayer === 'O' ? 'X' : 'O';
+            console.log(boardArray);
+        } else if (space == "#g3") {
+            console.log("it works!");
+            boardArray[6] = currentPlayer === 'O' ? 'X' : 'O';
+            console.log(boardArray);
+        } else if (space == "#h3") {
+            console.log("it works!");
+            boardArray[7] = currentPlayer === 'O' ? 'X' : 'O';
+            console.log(boardArray);
+        } else if (space == "#i3") {
+            console.log("it works!");
+            boardArray[8] = currentPlayer === 'O' ? 'X' : 'O';
+            console.log(boardArray);
+        } else {
+            console.log("Tie");
+        }
+    }
+
+
+  // $("button.play").click(function() {
+  //       alert("Handler for .click() called.");
+  //   });
+
+  // $("button.refresh").click(function() {
+  //     console.log('reset button clicked');
+  //     console.log('line 341');
+  //     window.location.reload();
+  // });
+
 
 // Turns off an element after one click to prevent further action
 // $( "#foo" ).one( "click", function() {
