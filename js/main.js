@@ -1,3 +1,138 @@
+  var winner = "";
+
+  function dropShadowABC(){
+     $( "#a1 > div > h2, #b1 > div > h2, #c1 > div > h2").addClass( " shadowed" );
+     console.log("dropShadow added?");
+    }
+      function dropShadowDEF(){
+     $( "#d2 > div > h2, #e2 > div > h2, #f2 > div > h2").addClass( " shadowed" );
+    }
+
+      function dropShadowGHI(){
+     $( "#g3 > div > h2, #h3 > div > h2, #i3 > div > h2").addClass( " shadowed" );
+    }
+
+      function dropShadowADG(){
+     $( "#a1 > div > h2, #d2 > div > h2, #g3 > div > h2").addClass( " shadowed" );
+    }
+
+      function dropShadowBEH(){
+     $( "#b1 > div > h2, #e2 > div > h2, #h3 > div > h2").addClass( " shadowed" );
+    }
+
+    function dropShadowCFI(){
+     $( "#c1 > div > h2, #f2 > div > h2, #i3 > div > h2").addClass( " shadowed" );
+    }
+
+    function dropShadowAEI(){
+     $( "#a1 > div > h2, #e2 > div > h2, #i3 > div > h2").addClass( " shadowed" );
+    }
+
+    function dropShadowCEG(){
+     $( "#c1 > div > h2, #e2 > div > h2, #g3 > div > h2").addClass( " shadowed" );
+    }
+
+    var score3of5 = [null, null, null, null, null];
+    var scoreOfX = 0;
+    var scoreOfO = 0;
+
+     var boardArray = [null, null, null,
+        null, null, null,
+        null, null, null
+    ];
+
+     function checkWinner(){
+      if (boardArray[0] === 'X' && boardArray[1]  === "X"  && boardArray[2] === "X"){
+       winner = "X";
+        dropShadowABC();
+        delayedAlert();
+        console.log('top row winner is ' + winner);
+        //check3of5winner();
+          //scoreOfX =+1;
+
+      //append the winner
+      }
+      if (boardArray[0] === 'O' && boardArray[1]  === "O"  && boardArray[2] === "O"){
+       winner = "O";
+        console.log('top row winner is ' + winner);
+        dropShadowABC();
+      }
+        if (boardArray[3] === 'X' && boardArray[4]  === "X"  && boardArray[5] === "X"){
+       winner = "X";
+        dropShadowDEF();
+        console.log('middle row winner is ' + winner);
+      }
+      if (boardArray[3] === 'O' && boardArray[4]  === "O"  && boardArray[5] === "O"){
+       winner = "O";
+         dropShadowDEF();
+        console.log('middle rox winner is ' + winner);
+      }
+      if (boardArray[6] === 'X' && boardArray[7]  === "X"  && boardArray[8] === "X"){
+       winner = "X";
+        dropShadowGHI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[6] === 'O' && boardArray[7]  === "O"  && boardArray[8] === "O"){
+       winner = "O";
+        dropShadowGHI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[0] === 'X' && boardArray[3]  === "X"  && boardArray[6] === "X"){
+       winner = "X";
+        dropShadowADG();
+        console.log('first column winner is ' + winner);
+      }
+      if (boardArray[0] === 'O' && boardArray[3]  === "O"  && boardArray[6] === "O"){
+       winner = "O";
+        dropShadowADG();
+        console.log('first column winner is ' + winner);
+      }
+      if (boardArray[1] === 'X' && boardArray[4]  === "X"  && boardArray[7] === "X"){
+       winner = "X";
+        dropShadowBEH();
+        console.log('middle column winner is ' + winner);
+      }
+      if (boardArray[1] === 'O' && boardArray[4]  === "O"  && boardArray[7] === "O"){
+       winner = "O";
+        dropShadowBEH();
+        console.log('middle column winner is ' + winner);
+      }
+      if (boardArray[2] === 'X' && boardArray[5]  === "X"  && boardArray[8] === "X"){
+       winner = "X";
+        dropShadowCFI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[2] === 'O' && boardArray[5]  === "O"  && boardArray[8] === "O"){
+       winner = "O";
+        dropShadowCFI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[0] === 'X' && boardArray[4]  === "X"  && boardArray[8] === "X"){
+       winner = "X";
+        dropShadowAEI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[0] === 'O' && boardArray[4]  === "O"  && boardArray[8] === "O"){
+       winner = "O";
+        dropShadowAEI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[2] === 'X' && boardArray[4]  === "X"  && boardArray[6] === "X"){
+       winner = "X";
+        dropShadowCEG();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[2] === 'O' && boardArray[4]  === "O"  && boardArray[6] === "O"){
+         winner = "O";
+        dropShadowCEG();
+        console.log('winner is ' + winner);
+      }
+      else{
+        console.log('else statement reached!');
+        console.log("boardArray: " +  boardArray[0]);
+      }
+    }
+
 $(document).ready(function() {
 
     var currentPlayer = 'X';
@@ -9,10 +144,6 @@ $(document).ready(function() {
     }
 
 //sets up the array used for score keeping in a round
-    var boardArray = [null, null, null,
-        null, null, null,
-        null, null, null
-    ];
 
     function onClickArray(space) {
         if (space == "#a1") {
@@ -165,45 +296,11 @@ $(document).ready(function() {
         onClickArray(space);
     });
 
-    var winner = "";
+
 
     $(".row").click(checkWinner);
 
-    function dropShadowABC(){
-     $( "#a1 > div > h2, #b1 > div > h2, #c1 > div > h2").addClass( " shadowed" );
-     console.log("dropShadow added?");
-    }
-      function dropShadowDEF(){
-     $( "#d2 > div > h2, #e2 > div > h2, #f2 > div > h2").addClass( " shadowed" );
-    }
 
-      function dropShadowGHI(){
-     $( "#g3 > div > h2, #h3 > div > h2, #i3 > div > h2").addClass( " shadowed" );
-    }
-
-      function dropShadowADG(){
-     $( "#a1 > div > h2, #d2 > div > h2, #g3 > div > h2").addClass( " shadowed" );
-    }
-
-      function dropShadowBEH(){
-     $( "#b1 > div > h2, #e2 > div > h2, #h3 > div > h2").addClass( " shadowed" );
-    }
-
-    function dropShadowCFI(){
-     $( "#c1 > div > h2, #f2 > div > h2, #i3 > div > h2").addClass( " shadowed" );
-    }
-
-    function dropShadowAEI(){
-     $( "#a1 > div > h2, #e2 > div > h2, #i3 > div > h2").addClass( " shadowed" );
-    }
-
-    function dropShadowCEG(){
-     $( "#c1 > div > h2, #e2 > div > h2, #g3 > div > h2").addClass( " shadowed" );
-    }
-
-    var score3of5 = [null, null, null, null, null];
-    var scoreOfX = 0;
-    var scoreOfO = 0;
 // this code is meant to count the 3 of 5 winner - finish after declaring
 // winner of each round and resetting the board, but need to keep talley
     // function check3of5winner(){
@@ -219,13 +316,13 @@ $(document).ready(function() {
     // }
 
 
-    var timeout8000;
-    var timeout8001;
+    var timeout7000;
+    var timeout7001;
 
 
     function delayedAlert() {
-      timeout8001 = window.setTimeout(declareRoundWinner, 8001);
-      timeout8000 = window.setTimeout(clearFix, 8000);
+      timeout7001 = window.setTimeout(declareRoundWinner, 7001);
+      timeout7000 = window.setTimeout(clearFix, 7000);
       function clearFix(){
       $(".row").addClass(" hidden");
       console.log('spaces hidden?');
@@ -236,97 +333,9 @@ $(document).ready(function() {
       }
     }
 
-    function checkWinner(){
-      if (boardArray[0] === 'X' && boardArray[1]  === "X"  && boardArray[2] === "X"){
-        var winner = "X";
-        dropShadowABC();
-        delayedAlert();
-        console.log('top row winner is ' + winner);
-        //check3of5winner();
-          //scoreOfX =+1;
 
-      //append the winner
-      }
-      if (boardArray[0] === 'O' && boardArray[1]  === "O"  && boardArray[2] === "O"){
-        var winner = "O";
-        console.log('top row winner is ' + winner);
-        dropShadowABC();
-      }
-        if (boardArray[3] === 'X' && boardArray[4]  === "X"  && boardArray[5] === "X"){
-        var winner = "X";
-        dropShadowDEF();
-        console.log('middle row winner is ' + winner);
-      }
-      if (boardArray[3] === 'O' && boardArray[4]  === "O"  && boardArray[5] === "O"){
-        var winner = "O";
-         dropShadowDEF();
-        console.log('middle rox winner is ' + winner);
-      }
-      if (boardArray[6] === 'X' && boardArray[7]  === "X"  && boardArray[8] === "X"){
-        var winner = "X";
-        dropShadowGHI();
-        console.log('winner is ' + winner);
-      }
-      if (boardArray[6] === 'O' && boardArray[7]  === "O"  && boardArray[8] === "O"){
-        var winner = "O";
-        dropShadowGHI();
-        console.log('winner is ' + winner);
-      }
-      if (boardArray[0] === 'X' && boardArray[3]  === "X"  && boardArray[6] === "X"){
-        var winner = "X";
-        dropShadowADG();
-        console.log('first column winner is ' + winner);
-      }
-      if (boardArray[0] === 'O' && boardArray[3]  === "O"  && boardArray[6] === "O"){
-        var winner = "O";
-        dropShadowADG();
-        console.log('first column winner is ' + winner);
-      }
-      if (boardArray[1] === 'X' && boardArray[4]  === "X"  && boardArray[7] === "X"){
-        var winner = "X";
-        dropShadowBEH();
-        console.log('middle column winner is ' + winner);
-      }
-      if (boardArray[1] === 'O' && boardArray[4]  === "O"  && boardArray[7] === "O"){
-        var winner = "O";
-        dropShadowBEH();
-        console.log('middle column winner is ' + winner);
-      }
-      if (boardArray[2] === 'X' && boardArray[5]  === "X"  && boardArray[8] === "X"){
-        var winner = "X";
-        dropShadowCFI();
-        console.log('winner is ' + winner);
-      }
-      if (boardArray[2] === 'O' && boardArray[5]  === "O"  && boardArray[8] === "O"){
-        var winner = "O";
-        dropShadowCFI();
-        console.log('winner is ' + winner);
-      }
-      if (boardArray[0] === 'X' && boardArray[4]  === "X"  && boardArray[8] === "X"){
-        var winner = "X";
-        dropShadowAEI();
-        console.log('winner is ' + winner);
-      }
-      if (boardArray[0] === 'O' && boardArray[4]  === "O"  && boardArray[8] === "O"){
-        var winner = "O";
-        dropShadowAEI();
-        console.log('winner is ' + winner);
-      }
-      if (boardArray[2] === 'X' && boardArray[4]  === "X"  && boardArray[6] === "X"){
-        var winner = "X";
-        dropShadowCEG();
-        console.log('winner is ' + winner);
-      }
-      if (boardArray[2] === 'O' && boardArray[4]  === "O"  && boardArray[6] === "O"){
-        var winner = "O";
-        dropShadowCEG();
-        console.log('winner is ' + winner);
-      }
-      else{
-        console.log('else statement reached!');
-        console.log("boardArray: " +  boardArray[0]);
-      }
-    }
+
+
 
       $( "#a1" ).one( "click", function() {
       });
@@ -336,6 +345,7 @@ $(document).ready(function() {
     checkWinner();
 
 });
+console.log(winner);
 
 // Turns off an element after one click to prevent further action
 // $( "#foo" ).one( "click", function() {

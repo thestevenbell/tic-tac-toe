@@ -29,12 +29,11 @@
 #TO DO
 ##JS TO DO
 - add i (instruction) icon with dropdown
-- highlight winner for 3 seconds with winner banner
-  and highlight the winning x/o icons
--add x/o winner tally to the players side
+-add x/o winner tally to the top bar
 -reset the game board after single game win
 -reset the game tally after 3 wins
 -restart game witout force page reload by click on reset button
+-add board/reset button to 1/5 game win notice without resetting the counter
 -deal with tie in game - reset the round?
 -DRY up code
 ##JS DONE
@@ -44,19 +43,22 @@
 - add the selected space by player to array
 - check the array after the 5th move and every other after for winner
 -diasble action on div after 1st click
+- highlight winner for 3 seconds with winner banner
+  and highlight the winning x/o icons
 
 ##UX/UI TO DO:
 -make mediaquuery to force aspect ratio
--animate win
+
 -STYLE color color color
 -add 5 game counter, x/o icon if win, frown if loss
 
 
 
-##UX/UI DONEs
+##UX/UI DONE
+-animate win
 
 #NOTES:
--text-shadow gerator http://css3gen.com/text-shadow/
+- used text-shadow gerator http://css3gen.com/text-shadow/
 
 - write this function to reset the board = clearBoard()
 This function will go through every cell in checkerboard (see previous
