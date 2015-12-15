@@ -19,45 +19,44 @@
   - next player clicks a square
   - squares selected until a player wins
 - on winning 1 game
-  - game indicates visually the winner
+  - game indicates visually the winner -  winning row is highlighted
   - board is reset
   - winner gets a tally icon
 - on winning 3 games
-  - winner is highlighted
+  - winner is highlighted,
   - message displays on screen that game will reset
   - game resets after 5 seconds
-
-#### JS
+#TO DO
+##JS TO DO
+- add i (instruction) icon with dropdown
+- highlight winner for 3 seconds with winner banner
+  and highlight the winning x/o icons
+-add x/o winner tally to the players side
+-reset the game board after single game win
+-reset the game tally after 3 wins
+-restart game witout force page reload by click on reset button
+-deal with tie in game - reset the round?
+-DRY up code
+##JS DONE
 - add x/o to selected square
 - must prevent the square from being selected
 - switch to the next player icon
 - add the selected space by player to array
 - check the array after the 5th move and every other after for winner
-- highlight winner for 3 seconds with winner banner
-  and highlight the winning x/o icons
-- add x/o winner tally to the players side
-- reset the game board after single game win
-- reset the game tally after 3 wins
+-diasble action on div after 1st click
+
+##UX/UI TO DO:
+-make mediaquuery to force aspect ratio
+-animate win
+-STYLE color color color
+-add 5 game counter, x/o icon if win, frown if loss
 
 
-#TO DO:
+
+##UX/UI DONEs
 
 #NOTES:
-To disable a space after move add a trasparent div over the top to intercept
-the clicks:
-http://stackoverflow.com/questions/8595909/how-to-completley-disable-any-mouse-click
-You can overlay a big, semi-transparent <div> that takes all the
-clicks. Just append a new <div> to .space <dive> with this style:
-.overlay {
-    background-color: rgba(1, 1, 1, 0.7);
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-}
-
-/*make mediaquuery to force aspect ratio*/
+-text-shadow gerator http://css3gen.com/text-shadow/
 
 - write this function to reset the board = clearBoard()
 This function will go through every cell in checkerboard (see previous
@@ -68,3 +67,4 @@ simple do a remove of all divs with the same class/id
 
 - animate a fade in and out x/o pattern on page load
 
+-define the action after win

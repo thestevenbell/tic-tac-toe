@@ -8,24 +8,18 @@ $(document).ready(function() {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     }
 
+//sets up the array used for score keeping in a round
     var boardArray = [null, null, null,
         null, null, null,
         null, null, null
     ];
 
-    //need to add the ability to add x/o to the 2d array
-    //continue to add the rest of the space positions
-    //figure out how to parse the array for winner - refer to prework
     function onClickArray(space) {
         if (space == "#a1") {
             console.log("a1: it works!");
             boardArray[0] = currentPlayer === 'O' ? 'X' : 'O';
             console.log(boardArray);
             console.log("boardArray space a1 = " + boardArray[0]);
-            // var stringConversion = String(boardArray[0]);
-            // console.log("type: " + boardArray[0].type);
-            // console.log("stringConversion type: " + stringConversion.type);
-            // console.log("stringConversion " + stringConversion);
             return boardArray[0];
         } else if (space == "#b1") {
             console.log("b1: it works!");
@@ -73,6 +67,7 @@ $(document).ready(function() {
 
     $("#a1").click(function() {
         var el = $("#a1");
+        $(this).unbind('click');
         onClick(el);
     });
 
@@ -83,6 +78,7 @@ $(document).ready(function() {
 
     $("#b1").click(function() {
         var el = $("#b1");
+        $(this).unbind('click');
         onClick(el);
     });
 
@@ -93,6 +89,7 @@ $(document).ready(function() {
 
     $("#c1").click(function() {
         var el = $("#c1");
+        $(this).unbind('click');
         onClick(el);
     });
 
@@ -103,6 +100,7 @@ $(document).ready(function() {
 
     $("#d2").click(function() {
         var el = $("#d2");
+        $(this).unbind('click');
         onClick(el);
     });
 
@@ -113,6 +111,7 @@ $(document).ready(function() {
 
     $("#e2").click(function() {
         var el = $("#e2");
+        $(this).unbind('click');
         onClick(el);
     });
 
@@ -123,6 +122,7 @@ $(document).ready(function() {
 
     $("#f2").click(function() {
         var el = $("#f2");
+        $(this).unbind('click');
         onClick(el);
     });
 
@@ -133,6 +133,7 @@ $(document).ready(function() {
 
     $("#g3").click(function() {
         var el = $("#g3");
+        $(this).unbind('click');
         onClick(el);
     });
 
@@ -143,6 +144,7 @@ $(document).ready(function() {
 
     $("#h3").click(function() {
         var el = $("#h3");
+        $(this).unbind('click');
         onClick(el);
     });
 
@@ -153,11 +155,13 @@ $(document).ready(function() {
 
     $("#i3").click(function() {
         var el = $("#i3");
+        $(this).unbind('click');
         onClick(el);
     });
 
     $("#i3").click(function() {
         var space = "#i3";
+        $(this).unbind('click');
         onClickArray(space);
     });
 
@@ -165,23 +169,157 @@ $(document).ready(function() {
 
     $(".row").click(checkWinner);
 
+    function dropShadowABC(){
+     $( "#a1 > div > h2, #b1 > div > h2, #c1 > div > h2").addClass( " shadowed" );
+     console.log("dropShadow added?");
+    }
+      function dropShadowDEF(){
+     $( "#d2 > div > h2, #e2 > div > h2, #f2 > div > h2").addClass( " shadowed" );
+    }
+
+      function dropShadowGHI(){
+     $( "#g3 > div > h2, #h3 > div > h2, #i3 > div > h2").addClass( " shadowed" );
+    }
+
+      function dropShadowADG(){
+     $( "#a1 > div > h2, #d2 > div > h2, #g3 > div > h2").addClass( " shadowed" );
+    }
+
+      function dropShadowBEH(){
+     $( "#b1 > div > h2, #e2 > div > h2, #h3 > div > h2").addClass( " shadowed" );
+    }
+
+    function dropShadowCFI(){
+     $( "#c1 > div > h2, #f2 > div > h2, #i3 > div > h2").addClass( " shadowed" );
+    }
+
+    function dropShadowAEI(){
+     $( "#a1 > div > h2, #e2 > div > h2, #i3 > div > h2").addClass( " shadowed" );
+    }
+
+    function dropShadowCEG(){
+     $( "#c1 > div > h2, #e2 > div > h2, #g3 > div > h2").addClass( " shadowed" );
+    }
+
+    var score3of5 = [null, null, null, null, null];
+    var scoreOfX = 0;
+    var scoreOfO = 0;
+// this code is meant to count the 3 of 5 winner - finish after declaring
+// winner of each round and resetting the board, but need to keep talley
+    // function check3of5winner(){
+    //   if(scoreOfX = 3){
+    //     console.log('X is grand champion!');
+    //   }
+    //   else if(scoreOfO = 3){
+    //     console.log('X is grand champion!');
+    //   }
+    //   else{
+    //     console.log('No winner yet!')
+    //   }
+    // }
+
+
+    var timeout8000;
+    var timeout8001;
+
+
+    function delayedAlert() {
+      timeout8001 = window.setTimeout(declareRoundWinner, 8001);
+      timeout8000 = window.setTimeout(clearFix, 8000);
+      function clearFix(){
+      $(".row").addClass(" hidden");
+      console.log('spaces hidden?');
+      }
+     function declareRoundWinner(){
+      $(".spaceBox").prepend("<div class='rowWinner'></div><div class='rowWinner'><h4>the winner of this round is " + winner + ".</h4></div>");
+       console.log('winner declared?');
+      }
+    }
 
     function checkWinner(){
-      console.log('var boardArray on click to checkWinner: ' + boardArray);
       if (boardArray[0] === 'X' && boardArray[1]  === "X"  && boardArray[2] === "X"){
         var winner = "X";
-        console.log('winner is ' + winner);
+        dropShadowABC();
+        delayedAlert();
+        console.log('top row winner is ' + winner);
+        //check3of5winner();
+          //scoreOfX =+1;
+
+      //append the winner
       }
       if (boardArray[0] === 'O' && boardArray[1]  === "O"  && boardArray[2] === "O"){
         var winner = "O";
-        console.log('winner is ' + winner);
+        console.log('top row winner is ' + winner);
+        dropShadowABC();
       }
         if (boardArray[3] === 'X' && boardArray[4]  === "X"  && boardArray[5] === "X"){
         var winner = "X";
-        console.log('winner is ' + winner);
+        dropShadowDEF();
+        console.log('middle row winner is ' + winner);
       }
       if (boardArray[3] === 'O' && boardArray[4]  === "O"  && boardArray[5] === "O"){
         var winner = "O";
+         dropShadowDEF();
+        console.log('middle rox winner is ' + winner);
+      }
+      if (boardArray[6] === 'X' && boardArray[7]  === "X"  && boardArray[8] === "X"){
+        var winner = "X";
+        dropShadowGHI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[6] === 'O' && boardArray[7]  === "O"  && boardArray[8] === "O"){
+        var winner = "O";
+        dropShadowGHI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[0] === 'X' && boardArray[3]  === "X"  && boardArray[6] === "X"){
+        var winner = "X";
+        dropShadowADG();
+        console.log('first column winner is ' + winner);
+      }
+      if (boardArray[0] === 'O' && boardArray[3]  === "O"  && boardArray[6] === "O"){
+        var winner = "O";
+        dropShadowADG();
+        console.log('first column winner is ' + winner);
+      }
+      if (boardArray[1] === 'X' && boardArray[4]  === "X"  && boardArray[7] === "X"){
+        var winner = "X";
+        dropShadowBEH();
+        console.log('middle column winner is ' + winner);
+      }
+      if (boardArray[1] === 'O' && boardArray[4]  === "O"  && boardArray[7] === "O"){
+        var winner = "O";
+        dropShadowBEH();
+        console.log('middle column winner is ' + winner);
+      }
+      if (boardArray[2] === 'X' && boardArray[5]  === "X"  && boardArray[8] === "X"){
+        var winner = "X";
+        dropShadowCFI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[2] === 'O' && boardArray[5]  === "O"  && boardArray[8] === "O"){
+        var winner = "O";
+        dropShadowCFI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[0] === 'X' && boardArray[4]  === "X"  && boardArray[8] === "X"){
+        var winner = "X";
+        dropShadowAEI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[0] === 'O' && boardArray[4]  === "O"  && boardArray[8] === "O"){
+        var winner = "O";
+        dropShadowAEI();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[2] === 'X' && boardArray[4]  === "X"  && boardArray[6] === "X"){
+        var winner = "X";
+        dropShadowCEG();
+        console.log('winner is ' + winner);
+      }
+      if (boardArray[2] === 'O' && boardArray[4]  === "O"  && boardArray[6] === "O"){
+        var winner = "O";
+        dropShadowCEG();
         console.log('winner is ' + winner);
       }
       else{
@@ -189,6 +327,9 @@ $(document).ready(function() {
         console.log("boardArray: " +  boardArray[0]);
       }
     }
+
+      $( "#a1" ).one( "click", function() {
+      });
 
     onClick();
     onClickArray();
