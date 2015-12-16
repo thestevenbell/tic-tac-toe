@@ -211,17 +211,17 @@ button {
 }
 
 #b1, #h3 {
-    border-right: black 2px solid;
-    border-left: black 2px solid;
+    border-right: black 3px solid;
+    border-left: black 3px solid;
 }
 
 #d2, #f2{
-    border-top: black 2px solid;
-    border-bottom: black 2px solid;
+    border-top: black 3px solid;
+    border-bottom: black 3px solid;
 }
 
 #e2{
-    border: black 2px solid;
+    border: black 3px solid;
 }
 
 .xoPlay{

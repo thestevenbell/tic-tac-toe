@@ -11,11 +11,12 @@ var cells = [ '#a1', '#b1', '#c1',
               '#d2', '#e2', '#f2',
               '#g3', '#h3', '#i3'
 ];
+var playsMade = 0;
 
 function addClickHandlerForCell(i) {
   var cell = cells[i];
   $(cell).click(function() {
-    $(this).unbind('click');
+    $(this).bind('click');
     onClick( $(this) );
     onClickArray(i);
   });
@@ -47,6 +48,7 @@ $(function() {
 
 function playReset() {
   console.log('playReset');
+  playsMade = 0;
   boardArray = [null, null, null,
                   null, null, null,
                   null, null, null
@@ -54,6 +56,8 @@ function playReset() {
   currentPlayer = 'X';
   winner = "";
   //$( ".row, #a1, #b1, #c1, #d2, #e2, #f2, #g3, #h3, #i3" ).bind("click");
+  $(".rowWinner").remove();
+  $(".xoPlay").remove();
   $( "#a1 > div > h2, #b1 > div > h2, #c1 > div > h2").removeClass( "shadowed" );
   $( "#d2 > div > h2, #e2 > div > h2, #f2 > div > h2").removeClass( "shadowed" );
   $( "#g3 > div > h2, #h3 > div > h2, #i3 > div > h2").removeClass( "shadowed" );
@@ -102,13 +106,19 @@ function dropShadowCEG(){
 // winner of each round and resetting the board, but need to keep talley
 function declare3of5Winner(){
   console.log('declare3of5Winner');
-  $(".spaceBox").replaceWith("<div class='rowWinner'><h1 class='shadowed'>" +  winner + winner + winner + '</h1></br><h4> is the grand champion!</h4></br></div>');
+  $(".spaceBox").replaceWith("<div class='rowWinner'><h1 class='shadowed'>" +  winner + winner + winner + '</h1></br><h4> is the grand champion!</h4><h5>Press reset to play again.<h5></br></div>');
+  console.log('Grand champion should be declared. Was it?');
+}
+
+function declareTie(){
+  console.log('declare3of5Winner');
+  $(".spaceBox").replaceWith("<div class='rowWinner'><h2 class='shadowed'>DRAW</h2><h5>The</h5><h2 class='shadowed'>GODS</h2></br><h5>have spoken.  Single combat to the death. Or press reset to play again.</h5></br></div>");
   console.log('Grand champion should be declared. Was it?');
 }
 
 //checks to see if either player has won three times. called after each play.
 function check3of5winner(){
-  console.log('check3of5winner');
+
   if(scoreOfX === 3){
     declare3of5Winner();
     console.log('<h2>X </h2></br>' + '<h4> is the grand champion!</h4>');
@@ -117,8 +127,12 @@ function check3of5winner(){
     declare3of5Winner();
     console.log('O is grand champion!');
   }
+  else if(scoreOfO + scoreOfX === 5){
+    declareTie();
+
+  }
   else{
-    console.log('Two letters enter, one letter leaves!');
+    console.log('check3of5 triggered. Keep playing, no winner yet.');
   }
 }
 
@@ -150,7 +164,10 @@ function scoreBoard(){
 //checks winner of the round, animates the winning moves.
 //Need to make function for every row
 function checkWinner(){
-  console.log('checkWinner');
+  console.log('checkWinner function called');
+  console.log('check3of5winner function invoked');
+  console.log('playsMade: ' + playsMade);
+  playsMade += 1;
       if (boardArray[0] === 'X' && boardArray[1]  === "X"  && boardArray[2] === "X"){
         winner = "X";
         dropShadowABC();
@@ -159,7 +176,7 @@ function checkWinner(){
         scoreBoard();
         console.log('this round top row winner is ' + winner);
       }
-      if (boardArray[0] === 'O' && boardArray[1]  === "O"  && boardArray[2] === "O"){
+      else if (boardArray[0] === 'O' && boardArray[1]  === "O"  && boardArray[2] === "O"){
         winner = "O";
         dropShadowABC();
         delayedAlert();
@@ -167,7 +184,7 @@ function checkWinner(){
         scoreBoard();
         console.log('this round top row winner is ' + winner);
       }
-      if (boardArray[3] === 'X' && boardArray[4]  === "X"  && boardArray[5] === "X"){
+      else if (boardArray[3] === 'X' && boardArray[4]  === "X"  && boardArray[5] === "X"){
         winner = "X";
         dropShadowDEF();
         delayedAlert();
@@ -175,7 +192,7 @@ function checkWinner(){
         scoreBoard();
         console.log('middle row winner is ' + winner);
       }
-      if (boardArray[3] === 'O' && boardArray[4]  === "O"  && boardArray[5] === "O"){
+      else if (boardArray[3] === 'O' && boardArray[4]  === "O"  && boardArray[5] === "O"){
         winner = "O";
         dropShadowDEF();
         delayedAlert();
@@ -183,7 +200,7 @@ function checkWinner(){
         scoreBoard();
         console.log('middle rox winner is ' + winner);
       }
-      if (boardArray[6] === 'X' && boardArray[7]  === "X"  && boardArray[8] === "X"){
+      else if (boardArray[6] === 'X' && boardArray[7]  === "X"  && boardArray[8] === "X"){
        winner = "X";
         dropShadowGHI();
         delayedAlert();
@@ -191,7 +208,7 @@ function checkWinner(){
         scoreBoard();
         console.log('winner is ' + winner);
       }
-      if (boardArray[6] === 'O' && boardArray[7]  === "O"  && boardArray[8] === "O"){
+      else if (boardArray[6] === 'O' && boardArray[7]  === "O"  && boardArray[8] === "O"){
        winner = "O";
         dropShadowGHI();
         delayedAlert();
@@ -199,7 +216,7 @@ function checkWinner(){
         scoreBoard();
         console.log('winner is ' + winner);
       }
-      if (boardArray[0] === 'X' && boardArray[3]  === "X"  && boardArray[6] === "X"){
+      else if (boardArray[0] === 'X' && boardArray[3]  === "X"  && boardArray[6] === "X"){
        winner = "X";
         dropShadowADG();
         delayedAlert();
@@ -207,7 +224,7 @@ function checkWinner(){
         scoreBoard();
         console.log('first column winner is ' + winner);
       }
-      if (boardArray[0] === 'O' && boardArray[3]  === "O"  && boardArray[6] === "O"){
+      else if (boardArray[0] === 'O' && boardArray[3]  === "O"  && boardArray[6] === "O"){
        winner = "O";
         dropShadowADG();
         delayedAlert();
@@ -215,7 +232,7 @@ function checkWinner(){
         scoreBoard();
         console.log('first column winner is ' + winner);
       }
-      if (boardArray[1] === 'X' && boardArray[4]  === "X"  && boardArray[7] === "X"){
+      else if (boardArray[1] === 'X' && boardArray[4]  === "X"  && boardArray[7] === "X"){
        winner = "X";
         dropShadowBEH();
         delayedAlert();
@@ -223,7 +240,7 @@ function checkWinner(){
         scoreBoard();
         console.log('middle column winner is ' + winner);
       }
-      if (boardArray[1] === 'O' && boardArray[4]  === "O"  && boardArray[7] === "O"){
+      else if (boardArray[1] === 'O' && boardArray[4]  === "O"  && boardArray[7] === "O"){
        winner = "O";
         dropShadowBEH();
         delayedAlert();
@@ -231,7 +248,7 @@ function checkWinner(){
         scoreBoard();
         console.log('middle column winner is ' + winner);
       }
-      if (boardArray[2] === 'X' && boardArray[5]  === "X"  && boardArray[8] === "X"){
+      else if (boardArray[2] === 'X' && boardArray[5]  === "X"  && boardArray[8] === "X"){
        winner = "X";
         dropShadowCFI();
         delayedAlert();
@@ -239,7 +256,7 @@ function checkWinner(){
         scoreBoard();
         console.log('winner is ' + winner);
       }
-      if (boardArray[2] === 'O' && boardArray[5]  === "O"  && boardArray[8] === "O"){
+      else if (boardArray[2] === 'O' && boardArray[5]  === "O"  && boardArray[8] === "O"){
        winner = "O";
         dropShadowCFI();
         delayedAlert();
@@ -247,7 +264,7 @@ function checkWinner(){
         scoreBoard();
         console.log('winner is ' + winner);
       }
-      if (boardArray[0] === 'X' && boardArray[4]  === "X"  && boardArray[8] === "X"){
+      else if (boardArray[0] === 'X' && boardArray[4]  === "X"  && boardArray[8] === "X"){
        winner = "X";
         dropShadowAEI();
         delayedAlert();
@@ -255,7 +272,7 @@ function checkWinner(){
         scoreBoard();
         console.log('winner is ' + winner);
       }
-      if (boardArray[0] === 'O' && boardArray[4]  === "O"  && boardArray[8] === "O"){
+      else if (boardArray[0] === 'O' && boardArray[4]  === "O"  && boardArray[8] === "O"){
        winner = "O";
         dropShadowAEI();
         delayedAlert();
@@ -263,7 +280,7 @@ function checkWinner(){
         scoreBoard();
         console.log('winner is ' + winner);
       }
-      if (boardArray[2] === 'X' && boardArray[4]  === "X"  && boardArray[6] === "X"){
+      else if (boardArray[2] === 'X' && boardArray[4]  === "X"  && boardArray[6] === "X"){
        winner = "X";
         dropShadowCEG();
         delayedAlert();
@@ -271,30 +288,44 @@ function checkWinner(){
         scoreBoard();
         console.log('winner is ' + winner);
       }
-      if (boardArray[2] === 'O' && boardArray[4]  === "O"  && boardArray[6] === "O"){
-         winner = "O";
+      else if (boardArray[2] === 'O' && boardArray[4]  === "O"  && boardArray[6] === "O"){
+        winner = "O";
         dropShadowCEG();
         delayedAlert();
         scoreOfO += 1;
         scoreBoard();
         console.log('winner is ' + winner);
+      }
+      else if (playsMade === 9){
+        console.log("else if delayedAlertTie function reached");
+        delayedAlertTie();
       }
       else{
-        console.log('else statement reached!');
-        console.log("boardArray: " +  boardArray[0]);
+        console.log('checkWinner, no winner yet, else statement reached!');
+        console.log("boardArray: " +  boardArray);
       }
 }
 
 var timeout3000;
 var timeout3001;
+var timeout3002;
 var timeout5000;
 
+
+
 function delayedAlert() {
-  // debugger;
   console.log('delayedAlert');
   timeout3001 = window.setTimeout(declareRoundWinner, 3001);
   timeout3000 = window.setTimeout(clearFix, 3000);
-  timeout2000 = window.setTimeout(check3of5winner, 5000);
+  timeout5000 = window.setTimeout(check3of5winner, 5000);
+}
+
+function delayedAlertTie() {
+  console.log('delayedAlertTie function');
+  timeout3002 = window.setTimeout(declareRoundTie, 3002);
+  timeout3000 = window.setTimeout(clearFix, 3000);
+  timeout5000 = window.setTimeout(check3of5winner, 5000);
+}
 
   function clearFix() {
     $(".row").addClass("hidden");
@@ -302,14 +333,19 @@ function delayedAlert() {
   }
 
   function declareRoundWinner(){
-    $(".spaceBox").prepend("<div class='rowWinner'><h1 class='shadowed'>" + winner + winner + winner +  "</h1><h4>won this  round</h4></div>");
+    $(".spaceBox").prepend("<div class='rowWinner'><h1 class='shadowed'>" + winner + winner + winner +  "</h1><h4>won this  round. </h4><h5>Press play to go again.</h5></div>");
     console.log('winner declared?');
   }
-  check3of5winner();
-}
+
+function declareRoundTie(){
+    $(".spaceBox").prepend("<div class='rowWinner'><h1 class='shadowed'>TIE</h1><h4></h4><h5>Press play to battle again.</h5></div>");
+    console.log('winner declared?');
+  }
+
 
 
 function onClick(el) {
+  console.log('function onClick() triggered');
   el.append("<div class= 'xoPlay'><h2> " + currentPlayer + " </h2></div>");
   // use the ternary operator to toggle the currentPlayer.
   currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
