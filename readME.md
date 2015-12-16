@@ -5,6 +5,7 @@
 Hosted Link: http://thestevenbell.github.io/tic-tac-toe/
 GitHub Source Files Link: https://github.com/thestevenbell/tic-tac-toe
 Trello Board: https://trello.com/b/vl446Sp6
+Wireframes: https://github.com/thestevenbell/tic-tac-toe/tree/master/WireframesPlanningDocs
 ***
 
 ###User Stories
