@@ -1,10 +1,13 @@
-#Tic Tac Toe  - a browser implementation of an oldie but goodie.
+#Tic Tac Toe: a browser implementation
 ## Steven Bell - WDI5@GA@ATL - December 2015
 ***
 ###Project 1.
 -Hosted Link: http://thestevenbell.github.io/tic-tac-toe/
+
 -GitHub Source Files Link: https://github.com/thestevenbell/tic-tac-toe
+
 -Trello Board: https://trello.com/b/vl446Sp6
+
 -Wireframes: https://github.com/thestevenbell/tic-tac-toe/tree/master/WireframesPlanningDocs
 ***
 
