@@ -2,10 +2,10 @@
 ## Steven Bell - WDI5@GA@ATL - December 2015
 ***
 ###Project 1.
-Hosted Link: http://thestevenbell.github.io/tic-tac-toe/
-GitHub Source Files Link: https://github.com/thestevenbell/tic-tac-toe
-Trello Board: https://trello.com/b/vl446Sp6
-Wireframes: https://github.com/thestevenbell/tic-tac-toe/tree/master/WireframesPlanningDocs
+-Hosted Link: http://thestevenbell.github.io/tic-tac-toe/
+-GitHub Source Files Link: https://github.com/thestevenbell/tic-tac-toe
+-Trello Board: https://trello.com/b/vl446Sp6
+-Wireframes: https://github.com/thestevenbell/tic-tac-toe/tree/master/WireframesPlanningDocs
 ***
 
 ###User Stories
@@ -14,7 +14,7 @@ Wireframes: https://github.com/thestevenbell/tic-tac-toe/tree/master/WireframesP
   - players are identified by x and o, left and right of screen
   - start game button and reset game button centered on top of page above board
 
-    directions:
+- *directions:*
       The champion will be the first player to win 3 games out of 5.
       Choose which player will start.  First player is X.
       Player X, it's your turn, select a square to begin the game.
@@ -33,11 +33,16 @@ Wireframes: https://github.com/thestevenbell/tic-tac-toe/tree/master/WireframesP
   - winner is highlighted,
   - message displays on screen that game will reset
   - game resets after 5 seconds
+
 #TO DO
+
 ##JS TO DO
+
 - add i (instruction) icon with dropdown
 -DRY up code
+
 ##JS DONE
+
 -add x/o winner tally to the top bar
 - add x/o to selected square
 - must prevent the square from being selected
@@ -55,7 +60,9 @@ Wireframes: https://github.com/thestevenbell/tic-tac-toe/tree/master/WireframesP
 -add board/reset button to 1/5 game win notice without resetting the counter
 -deal with tie in game - reset the round?
 -add "x" won round '?'
+
 ##UX/UI TO DO:
+
 -make mediaquuery to force aspect ratio
 -STYLE color color color
 
@@ -75,6 +82,7 @@ Wireframes: https://github.com/thestevenbell/tic-tac-toe/tree/master/WireframesP
   -ensure the buttons work
 -AI
 -Play timer
+
 #TECHNOLOGY USED
 -CSS
 -HTML
