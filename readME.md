@@ -1,12 +1,18 @@
-#Tic Tac Toe
-## Steven Bell - WDI5@GA@ATL
+#Tic Tac Toe  - a browser implementation of an oldie but goodie.
+## Steven Bell - WDI5@GA@ATL - December 2015
+***
+###Project 1.
+Hosted Link: http://thestevenbell.github.io/tic-tac-toe/
+GitHub Source Files Link: https://github.com/thestevenbell/tic-tac-toe
+Trello Board: https://trello.com/b/vl446Sp6
+***
 
 ###User Stories
 - on page load :
   - TTT board is displayed center screen
   - players are identified by x and o, left and right of screen
   - start game button and reset game button centered on top of page above board
-  - diplay directions under the buttons above the board
+
     directions:
       The champion will be the first player to win 3 games out of 5.
       Choose which player will start.  First player is X.
@@ -29,18 +35,9 @@
 #TO DO
 ##JS TO DO
 - add i (instruction) icon with dropdown
--add x/o winner tally to the top bar
--reset the game board after single game win
-  -remove classes from rows
-  -
--reset the game tally after 3 wins
-  - clear the scoreKeep array
--restart game witout force page reload by click on reset button
--add board/reset button to 1/5 game win notice without resetting the counter
--deal with tie in game - reset the round?
--add "x" won round '?'
 -DRY up code
 ##JS DONE
+-add x/o winner tally to the top bar
 - add x/o to selected square
 - must prevent the square from being selected
 - switch to the next player icon
@@ -49,28 +46,45 @@
 -diasble action on div after 1st click
 - highlight winner for 3 seconds with winner banner
   and highlight the winning x/o icons
-
+  -reset the game board after single game win
+  -remove classes from rows
+-reset the game tally after 3 wins
+  - clear the scoreKeep array
+-restart game witout force page reload by click on reset button
+-add board/reset button to 1/5 game win notice without resetting the counter
+-deal with tie in game - reset the round?
+-add "x" won round '?'
 ##UX/UI TO DO:
 -make mediaquuery to force aspect ratio
-
 -STYLE color color color
--add 5 game counter, x/o icon if win, frown if loss
-
-
 
 ##UX/UI DONE
--animate win
+- animate win
+- animate a fade in and out x/o pattern on page load
+- define the action after win
+-add 5 game counter, x/o icon if win, frown if loss
 
-#NOTES:
+##FUTURE DEVELOPMENT
+- diplay directions on hover over the buttons above the board
+- Add # icon to the browser tab
+- make responsive
+  -remove the sidebars with player x/o icons
+  -hardcode the aspect ratio of the board to stop elongation
+  -increase size of the talley divs, move below play and reset buttons
+  -ensure the buttons work
+-AI
+-Play timer
+#TECHNOLOGY USED
+-CSS
+-HTML
+-JavaScript
+-JQuery
+#NOTES and RESOURCES
+-Google Web Fonts
+-Bootstrap Font and Web Icons
+-Reset.css
 - used text-shadow gerator http://css3gen.com/text-shadow/
 
-- write this function to reset the board = clearBoard()
-This function will go through every cell in checkerboard (see previous
-exercise) and set that cell's value to null.
--write another function to reset the tally clearTally - get number of div
-elements that were appended and then do an equal number of divs, or try to
-simple do a remove of all divs with the same class/id
 
-- animate a fade in and out x/o pattern on page load
 
--define the action after win
+
